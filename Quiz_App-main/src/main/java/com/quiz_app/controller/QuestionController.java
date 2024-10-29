@@ -20,7 +20,7 @@ public class QuestionController {
 
     // 모든 질문을 가져오는 메서드
     // HTTP GET 요청을 "/question/allQuestions" 경로로 받아 모든 질문 리스트를 반환
-    @GetMapping("allQuestions")
+    @GetMapping("/allQuestions")
     public ResponseEntity<List<Question>> getAllQuestions() {
         // questionService의 getAllQuestions 메서드를 호출하여 모든 질문 리스트를 반환
         return questionService.getAllQuestions();
@@ -28,7 +28,7 @@ public class QuestionController {
 
     // 특정 카테고리에 속한 질문들을 가져오는 메서드
     // HTTP GET 요청을 "/question/category/{category}" 경로로 받아 해당 카테고리의 질문 리스트를 반환
-    @GetMapping("category/{category}")
+    @GetMapping("/category/{category}")
     public ResponseEntity<List<Question>> getQuestionsByCategory(@PathVariable String category) {
         // 경로 변수로 전달된 category를 사용해 questionService의 getQuestionsByCategory 메서드를 호출하여 질문 리스트를 가져옴
         return questionService.getQuestionsByCategory(category);
@@ -36,7 +36,7 @@ public class QuestionController {
 
     // 새로운 질문을 추가하는 메서드
     // HTTP POST 요청을 "/question/add" 경로로 받아 새로운 질문을 추가
-    @PostMapping("add")
+    @PostMapping("/add")
     public ResponseEntity<String> addQuestion(@RequestBody Question question) {
         // 요청 본문으로 전달된 question 객체를 사용해 questionService의 addQuestion 메서드를 호출하여 질문을 추가
         return questionService.addQuestion(question);

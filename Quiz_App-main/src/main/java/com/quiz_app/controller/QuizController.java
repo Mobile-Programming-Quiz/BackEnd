@@ -23,7 +23,7 @@ public class QuizController {
 
     // 퀴즈를 생성하는 메서드
     // HTTP POST 요청을 "/quiz/create" 경로로 받아 퀴즈를 생성
-    @PostMapping("create")
+    @PostMapping("/create")
     public ResponseEntity<String> createQuiz(@RequestParam String category, @RequestParam int numQ, @RequestParam String title) {
         // category, numQ(질문 수), title을 받아서 quizService의 createQuiz 메서드를 호출
         return quizService.createQuiz(category, numQ, title);
@@ -31,7 +31,7 @@ public class QuizController {
 
     // 특정 퀴즈의 질문들을 가져오는 메서드
     // HTTP GET 요청을 "/quiz/get/{id}" 경로로 받아 해당 ID의 퀴즈 질문을 반환
-    @GetMapping("get/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id) {
         // 경로 변수로 전달된 id를 사용해 quizService의 getQuizQuestions 메서드를 호출하여 질문 리스트를 가져옴
         return quizService.getQuizQuestions(id);
@@ -39,7 +39,7 @@ public class QuizController {
 
     // 퀴즈 제출 및 점수 계산 메서드
     // HTTP POST 요청을 "/quiz/submit/{id}" 경로로 받아 퀴즈 답안을 제출하고 점수를 계산
-    @PostMapping("submit/{id}")
+    @PostMapping("/submit/{id}")
     public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses) {
         // 경로 변수 id와 요청 본문으로 받은 responses(답변 리스트)를 사용하여 quizService의 calculateResult 메서드를 호출하여 점수를 계산
         return quizService.calculateResult(id, responses);
